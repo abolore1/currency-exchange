@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Exchange Rate Calculator</title>
+</head>
+
+<body>
+  <img src="img/money2.png" alt="not showing" class="money-img">
+  <h1>Exchange Rate Calculator</h1>
+  <p>Choose the currency you want to convert to Naira</p>
+  
+  <div class="container">
+    <div class="currency">
+
+      <select name="" id="currency-one">
+        <option value="USD" selected>USD</option>
+        <option value="AFN">AFN</option>
+        <option value="AED">AED</option>
+        <option value="ALL">ALL</option>
+        <option value="AMD">AMD</option>
+        <option value="ANG">ANG</option>
+        <option value="AOA">AOA</option>
+        <option value="AWG">AWG</option>
+        <option value="AZN">AZN</option>
+        <option value="ARS">ARS</option>
+        <option value="AUD">AUD</option>
+        <option value="BGN">BGN</option>
+        <option value="BAM">BAM</option>
+        <option value="BDT">BDT</option>
+        <option value="BGN">BGN</option>
+        <option value="BHD">BHD</option>
+        <option value="BIF">BIF</option>
+        <option value="BMD">BMD</option>
+        <option value="BND">BND</option>
+        <option value="BOB">BOB</option>
+        <option value="BTN">BTN</option>
+        <option value="BWP">BWP</option>
+        <option value="BYN">BYN</option>
+        <option value="BZD">BZD</option>
+        <option value="BRL">BRL</option>
+        <option value="BSD">BSD</option>
+        <option value="CAD">CAD</option>
+        <option value="CHF">CHF</option>
+        <option value="CDF">CDF</option>
+        <option value="CLP">CLP</option>
+        <option value="CNY">CNY</option>
+        <option value="COP">COP</option>
+        <option value="CZK">CZK</option>
+        <option value="DKK">DKK</option>
+        <option value="DOP">DOP</option>
+        <option value="DZD">DZD</option>
+        <option value="ERN">ERN</option>
+        <option value="ETB">ETB</option>
+        <option value="EGP">EGP</option>
+        <option value="EUR">EUR</option>
+        <option value="FOK">FOK</option>
+        <option value="FJD">FJD</option>
+        <option value="GBP">GBP</option>
+        <option value="GTQ">GTQ</option>
+        <option value="GEL">GEL</option>
+        <option value="GGP">GGP</option>
+        <option value="GHS">GHS</option>
+        <option value="GIP">GIP</option>
+        <option value="GMD">GMD</option>
+        <option value="HKD">HKD</option>
+        <option value="HRK">HRK</option>
+        <option value="HUF">HUF</option>
+        <option value="IDR">IDR</option>
+        <option value="ILS">ILS</option>
+        <option value="INR">INR</option>
+        <option value="ISK">ISK</option>
+        <option value="IQD">IQD</option>
+        <option value="IRR">IRR</option>
+        <option value="JPY">JPY</option>
+        <option value="JEP">JEP</option>
+        <option value="JMD">JMD</option>
+        <option value="JOD">JOD</option>
+        <option value="KRW">KRW</option>
+        <option value="KEZ">KEZ</option>
+        <option value="KMF">KMF</option>
+        <option value="KZT">KZT</option>
+        <option value="LAK">LAK</option>
+        <option value="LBP">LBP</option>
+        <option value="LSL">LSL</option>
+        <option value="LYD">LYD</option>
+        <option value="MXN">MXN</option>
+        <option value="MYR">MYR</option>
+        <option value="NOK">NOK</option>
+        <option value="NZD">NZD</option>
+        <option value="PAB">PAB</option>
+        <option value="PEN">PEN</option>
+        <option value="PHP">PHP</option>
+        <option value="PKR">PKR</option>
+        <option value="PLN">PLN</option>
+        <option value="PYG">PYG</option>
+        <option value="RON">RON</option>
+        <option value="RUB">RUB</option>
+        <option value="RSD">RSD</option>
+        <option value="SAR">SAR</option>
+        <option value="SEK">SEK</option>
+        <option value="SGD">SGD</option>
+        <option value="THB">THB</option>
+        <option value="TRY">TRY</option>
+        <option value="TWD">TWD</option>
+        <option value="UAH">UAH</option>
+        <option value="UYU">UYU</option>
+        <option value="VND">VND</option>
+        <option value="VEX">VEX</option>
+        <option value="ZAR">ZAR</option>
+        <option value="ZWL">ZWL</option>
+      </select>
+      <input type="number" id="amount-one" placeholder="0" value="1">
+    </div>
+
+    <div class="swap-rate-container">
+      <button class="btn" id="convert"  >Convert</button>
+      <h2 class="rate" id="rate"></h2>
+    </div>
+
+    <div class="currency">
+      <select class="" id="currency-two">
+        <i class="fa-caret-down"></i>
+        <option value="NGN" selected>NGN</option>
+ 
+
+      </select>
+      <input type="number" id="amount-two" placeholder="0" value="">
+    </div>
+  </div>
+
+  <script src="jquery-1.8.3.js"></script>
+  <script>
+    $(document).ready(() => {
+     
+      // Adding event listeners
+      $('#currency-one').change(()=> convertRate())
+      $('#amount-one').keyup(()=> convertRate())
+      // $('#currency-two').change(()=> convertRate())
+      $('#amount-two').change(()=> convertRate())
+      $('#convert').click(()=> convertRate())
+
+     
+
+     function convertRate() {
+      const currencyEl_One = $('#currency-one').val();
+     
+      const currencyEl_Two = $('#currency-two').val();
+      // let amount_Two = $('#amount-two').val();
+     
+        $.ajax({
+        url: `https://api.exchangerate-api.com/v4/latest/${currencyEl_One}`,
+        type: 'GET',
+         success:function(res) {
+          const amount_One = $('#amount-one').val();  
+          let rate =  res.rates[currencyEl_Two];
+          let mainRate = parseFloat(amount_One * rate).toFixed(2)
+          $('#rate').text(`1 ${currencyEl_One} = ${rate} ${currencyEl_Two} `)
+          $('#amount-two').val(mainRate)
+         
+        }
+      })
+        
+     }
+    
+     convertRate()
+
+    })
+  </script>
+</body>
+
+</html>
